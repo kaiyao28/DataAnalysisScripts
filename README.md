@@ -11,11 +11,6 @@ A personal reference library of reusable data analysis scripts.
 | `03_wrangling.py` | Filter, sort, groupby, merge/join, pivot/melt, datetime, new columns |
 | `04_numpy.py` | Array creation, indexing, math, statistics, linear algebra |
 
-### Notes (`python/notes/`)
-
-| File | Description |
-|------|-------------|
-| `gotchas.md` | Correct patterns for common mistakes, built from real errors |
 
 ## SQL (`SQL/`)
 
@@ -23,11 +18,6 @@ A personal reference library of reusable data analysis scripts.
 |------|-------------|
 | `sql_notes.md` | SQL quick reference — queries, functions, data types, constraints |
 
-### Notes (`SQL/notes/`)
-
-| File | Description |
-|------|-------------|
-| `gotchas.md` | Correct SQL patterns built from real queries |
 
 ## Dependencies
 
