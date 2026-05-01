@@ -13,6 +13,9 @@ df[df["col"].str.contains("pattern")]
 
 df.query("col1 > 10 and col2 == 'A'")     # query string syntax
 
+df.loc[df["col"] == "A"]                  # filter rows with loc
+df.loc[df["col"] == "A", ["col1", "col2"]]  # filter rows AND select columns
+
 # ── SELECT COLUMNS ─────────────────────────────────────────────────────────────
 df[["col1", "col2"]]
 df.select_dtypes(include="number")

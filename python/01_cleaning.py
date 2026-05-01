@@ -5,8 +5,10 @@ df = pd.read_csv("data.csv")
 
 # ── INSPECT ────────────────────────────────────────────────────────────────────
 df.shape
+nrows, ncols = df.shape                    # or df.shape[0], df.shape[1]
 df.dtypes
 df.head()
+df.tail()
 df.info()
 df.describe(include="all")
 
