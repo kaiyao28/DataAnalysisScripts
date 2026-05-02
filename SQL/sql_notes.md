@@ -77,6 +77,15 @@ ORDER BY column ASC/DESC
 LIMIT num OFFSET num;
 ```
 
+### Self join to compare rows within the same table
+```sql
+SELECT w1.id
+FROM Weather w1
+JOIN Weather w2
+  ON DATEDIFF(w1.recordDate, w2.recordDate) = 1
+WHERE w1.temperature > w2.temperature;
+```
+
 ---
 
 ## WHERE Operators
@@ -178,10 +187,23 @@ SELECT IFNULL(col, 0) FROM mytable;
 ## Window Functions
 ```sql
 SELECT id, value,
-    ROW_NUMBER() OVER (PARTITION BY category ORDER BY value DESC) AS row_num,
-    SUM(value)   OVER (PARTITION BY category) AS total_value
+    ROW_NUMBER()   OVER (PARTITION BY category ORDER BY value DESC) AS row_num,
+    RANK()         OVER (PARTITION BY category ORDER BY value DESC) AS rank,
+    DENSE_RANK()   OVER (PARTITION BY category ORDER BY value DESC) AS dense_rank,
+    SUM(value)     OVER (PARTITION BY category) AS total_value,
+    AVG(value)     OVER (PARTITION BY category) AS avg_value,
+    LAG(value, 1)  OVER (ORDER BY date) AS prev_value,
+    LEAD(value, 1) OVER (ORDER BY date) AS next_value
 FROM mytable;
 ```
+
+| Function | Description |
+|---|---|
+| `ROW_NUMBER()` | Unique sequential number per partition |
+| `RANK()` | Rank with gaps on ties (1,1,3) |
+| `DENSE_RANK()` | Rank without gaps on ties (1,1,2) |
+| `LAG(col, n)` | Value from n rows before |
+| `LEAD(col, n)` | Value from n rows ahead |
 
 ---
 

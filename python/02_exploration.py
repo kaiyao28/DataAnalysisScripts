@@ -14,6 +14,8 @@ df.describe(include="object")             # string/categorical stats
 df["col"].value_counts()
 df["col"].value_counts(normalize=True)     # as proportions
 df["col"].value_counts(dropna=False)       # include NaN
+df["col"].unique()                         # array of unique values
+df["col"].nunique()                        # count of unique values
 
 # ── DISTRIBUTIONS ──────────────────────────────────────────────────────────────
 df["col"].mean()

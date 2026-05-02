@@ -23,8 +23,8 @@ df.dropna(thresh=5)                        # keep rows with at least 5 non-NaN
 df["col"].fillna(0)                        # fill with constant
 df["col"].fillna(df["col"].mean())         # fill with mean
 df["col"].fillna(df["col"].median())       # fill with median
-df["col"].fillna(method="ffill")           # forward fill
-df["col"].fillna(method="bfill")           # backward fill
+df["col"].ffill()                          # forward fill
+df["col"].bfill()                          # backward fill
 df.fillna(df.mean(numeric_only=True))      # fill all numeric cols with their mean
 
 # ── DUPLICATES ─────────────────────────────────────────────────────────────────
@@ -70,8 +70,8 @@ df["col"].str.split(",").str[0]            # split and take first part
 df["col"].str.extract(r"(\d+)")            # extract with regex
 
 # ── COLUMN OPERATIONS ──────────────────────────────────────────────────────────
-df.rename(columns={"old": "new"})
-df.drop(columns=["col1", "col2"])
+df = df.rename(columns={"old": "new"})
+df = df.drop(columns=["col1", "col2"])
 df.columns = df.columns.str.lower().str.replace(" ", "_")  # clean all col names
 
 # reorder columns

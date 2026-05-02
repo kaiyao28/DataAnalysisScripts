@@ -38,8 +38,9 @@ df["binned"] = pd.cut(df["col"], bins=5)
 df["binned"] = pd.cut(df["col"], bins=[0, 18, 35, 60, 100], labels=["<18", "18-35", "35-60", "60+"])
 df["rank"] = df["col"].rank(pct=True)     # percentile rank
 
-df["new"] = df["col"].map({"A": 1, "B": 2, "C": 3})          # map values
+df["new"] = df["col"].map({"A": 1, "B": 2, "C": 3})           # map values
 df["new"] = df["col"].apply(lambda x: x * 2 if x > 0 else 0)  # apply function
+df = df.assign(new_col=df["col"] * 2)                          # assign new col (chainable)
 
 # ── GROUPBY & AGGREGATE ────────────────────────────────────────────────────────
 df.groupby("group")["val"].sum()
